@@ -1,0 +1,32 @@
+
+
+<?php $__env->startSection('content'); ?>
+<div class="post-content post-single">
+    <div class="post-media post-image">
+    <img loading="lazy" src="<?php echo e(asset('images/news/news1.jpg')); ?>" class="img-fluid" alt="post-image">
+    </div>
+
+    <div class="my-2">
+
+        <a href="/admin/dashboard/posts" class="btn btn-success"><i class="bi bi-arrow-left"></i> Kembali</a>
+        <a href="/admin/dashboard/posts/<?php echo e($post->slug); ?>/edit" class="btn btn-warning"><i class="bi bi-pencil"></i> Sunting</a>
+        <form action="/admin/dashboard/posts/<?php echo e($post->slug); ?>" method="post" class="d-inline">
+            <?php echo method_field('delete'); ?>
+            <?php echo csrf_field(); ?>
+            <button class="btn btn-danger" onclick="return confirm('Apakah anda yakin?')"><i class="bi bi-x-circle"></i> Hapus</button>
+        </form>
+    </div>
+    <div class="entry-header">
+    <div class="post-body">
+            <div class="post-meta">
+                <h2 class="entry-title"><?php echo e($post->title); ?></h2>
+            </div><!-- header end -->
+        </div>
+    </div>
+
+    <div class="entry-content">
+        <?php echo $post->body; ?>
+
+    </div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('admin.layouts.main', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\laragon\www\bapenda\resources\views/admin/post.blade.php ENDPATH**/ ?>
